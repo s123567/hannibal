@@ -2,9 +2,10 @@ class QuotesController < ApplicationController
   def create
     @quote = Quote.new(quote_params)
     if @quote.save
+      flash[:success] = 'Quote created'
       redirect_to root_url
     else
-      render 'pages/error'
+      render 'pages/home'
     end
   end
 
