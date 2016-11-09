@@ -3,7 +3,11 @@
 <%= render 'shared/quote_form' %>
 
 <% if @quotes %>
+
   <% @quotes.each do |q| %>
-  <%= q.content %>
+  <li><%= q.content %></li>
+  <li><%= link_to "X", quote_path(q), method: :delete %></li>
+  <hr>
+  
   <% end %>
 <% end %>

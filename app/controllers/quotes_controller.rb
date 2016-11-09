@@ -9,6 +9,12 @@ class QuotesController < ApplicationController
   end
 
   def destroy
+    @quote = Quote.find(params[:id])
+    if @quote.destroy
+    redirect_to root_url
+  else
+    render 'pages/error'
+  end
     
   end
 
