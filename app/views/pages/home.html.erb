@@ -1,0 +1,9 @@
+<h1>Home page ici</h1>
+<p>Quote ici</p>
+<%= render 'shared/quote_form' %>
+
+<% if @quotes %>
+  <% @quotes.each do |q| %>
+  <%= q.content %>
+  <% end %>
+<% end %>
