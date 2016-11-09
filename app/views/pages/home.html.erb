@@ -1,12 +1,15 @@
 <h1>Page d'accueil d'Hannibal</h1>
 <p>Ajouter une citation</p>
 <%= render 'shared/error_messages' %>
-<%= render 'shared/quote_form' %>
+
 
 <% if @quotes && user_signed_in? %>
+<%= render 'shared/quote_form' %>
   <% @quotes.each do |q| %>
-  <li><%= q.content %></li>
+  <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
+  <% if q.user == current_user %>
   <li><%= link_to "X", quote_path(q), method: :delete %></li>
+  <% end %>
   <hr>
   <% end %>
   <% else %>
