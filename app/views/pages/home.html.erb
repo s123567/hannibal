@@ -3,12 +3,12 @@
 <%= render 'shared/error_messages' %>
 <%= render 'shared/quote_form' %>
 
-<% if @quotes %>
-
+<% if @quotes && user_signed_in? %>
   <% @quotes.each do |q| %>
   <li><%= q.content %></li>
   <li><%= link_to "X", quote_path(q), method: :delete %></li>
   <hr>
-  
   <% end %>
+  <% else %>
+  <p>Oups, not signe in</p>
 <% end %>
