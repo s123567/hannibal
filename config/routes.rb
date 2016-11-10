@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :quotes, only: [:create, :destroy]
 
-  devise_scope :user do get '/users/sign_out' => 'devise/sessions#destroy' end
+  devise_scope :user do 
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
 end

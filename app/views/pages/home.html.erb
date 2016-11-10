@@ -5,7 +5,7 @@
 
 <% if @quotes && user_signed_in? %>
 <%= render 'shared/quote_form' %>
-  <% @quotes.each do |q| %>
+  <% @user_quotes.each do |q| %>
   <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
   <% if q.user == current_user %>
   <li><%= link_to "X", quote_path(q), method: :delete %></li>
