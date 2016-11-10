@@ -1,10 +1,12 @@
 <h1>Page d'accueil d'Hannibal</h1>
-<p>Ajouter une citation</p>
+
 <%= render 'shared/error_messages' %>
 
 
 <% if @quotes && user_signed_in? %>
+  <p>Ajouter une citation</p>
 <%= render 'shared/quote_form' %>
+<h2>Voici MES citations</h2>
   <% @user_quotes.each do |q| %>
   <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
   <% if q.user == current_user %>
@@ -12,6 +14,10 @@
   <% end %>
   <hr>
   <% end %>
+  <h2>Voici toutes les citations dispo</h2>
+    <% @quotes.each do |q| %>
+        <li><%= q.content %> + ||| - </li>
+    <% end %>
   <% else %>
   <p>Oups, not signe in</p>
 <% end %>
