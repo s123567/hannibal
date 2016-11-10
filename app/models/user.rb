@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          has_many :quotes
          has_many :upvotes
+
+         def upvoted?(quote)
+          quote.upvotes.where(user: self).any?
+         end
 end

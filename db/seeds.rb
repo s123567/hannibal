@@ -6,13 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-bob = User.create!(email: 'bob@bob.com', password: 'testtest', password_confirmation: 'testtest')
-joe = User.create!(email: 'joe@joe.com', password: 'testtest', password_confirmation: 'testtest')
+bob = User.create!(email: 'bob@bob.com', password: 'testtest')
+joe = User.create!(email: 'joe@joe.com', password: 'testtest')
 
-Quote.create!(content: "quote1", user: bob)
+q1 = Quote.create!(content: "quote1", user: bob)
 Quote.create!(content: "quote2", user: bob)
 Quote.create!(content: "quote3", user: bob)
-Quote.create!(content: "quote4", user: joe)
+
+q4 = Quote.create!(content: "quote4", user: joe)
+
 Quote.create!(content: "quote5", user: joe)
 Quote.create!(content: "quote6", user: joe)
 Quote.create!(content: "quote7", user: joe)
+
+#upvotes
+q1.upvotes.create! user: joe
+q4.upvotes.create! user: joe

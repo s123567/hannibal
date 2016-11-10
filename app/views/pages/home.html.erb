@@ -12,6 +12,13 @@
   <% if q.user == current_user %>
   <li><%= link_to "X", quote_path(q), method: :delete %></li>
   <% end %>
+  <% if @user.upvoted?(q)%>
+     UNVOTE ici
+     <%= link_to 'UNLIKE', upvote_path(current_user.upvotes.where(quote: q).first), method: :delete%>
+    <% else %>
+     LIKE la 
+     <%= link_to 'LIKE', upvotes_path(quote_id: q.id), method: :post%>
+  <% end %>
   <hr>
   <% end %>
   <h2>Voici toutes les citations dispo</h2>
