@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110150816) do
+ActiveRecord::Schema.define(version: 20161111140341) do
 
   create_table "quotes", force: :cascade do |t|
     t.text     "content"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 20161110150816) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_quotes_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "upvotes", force: :cascade do |t|
