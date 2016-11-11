@@ -17,7 +17,7 @@
   <% end %>
   <h2>Voici toutes les citations dispo</h2>
     <% @quotes.each do |q| %>
-        <li><%= q.content %></li>
+        <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
         <% if @user.upvoted?(q)%>
            <li><span><%= link_to 'UNLIKE', upvote_path(current_user.upvotes.where(quote: q).first), method: :delete %></span></li>
           <% else %>
