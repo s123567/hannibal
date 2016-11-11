@@ -15,6 +15,12 @@
   
   <hr>
   <% end %>
+
+  <h2>Here are all the quotes I like</h2>
+  <% current_user.upvotes.all.each do |u| %>
+    <%= u.quote.content %> de l'utilisateur <%= u.quote.user_id %>
+  <% end %>
+
   <h2>Voici toutes les citations dispo</h2>
     <% @quotes.each do |q| %>
         <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
@@ -24,12 +30,6 @@
           <li><span><%= link_to 'LIKE', upvotes_path(quote_id: q.id), method: :post%></span></li>
         <% end %>
     <% end %>
-
-
-<h2>Here are all the quotes I like</h2>
-<% current_user.upvotes.all.each do |u| %>
-  <%= u.quote.content %>
-<% end %>
 
 
   <% else %>

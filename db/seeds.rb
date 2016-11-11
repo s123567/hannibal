@@ -6,19 +6,54 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-bob = User.create!(email: 'bob@bob.com', password: 'testtest')
-joe = User.create!(email: 'joe@joe.com', password: 'testtest')
 
-q1 = Quote.create!(content: "quote1", user: bob)
-Quote.create!(content: "quote2", user: bob)
-Quote.create!(content: "quote3", user: bob)
+# Users
+User.create!(
+             email: "example@hannibal.org",
+             password:              "testtest",
+             password_confirmation: "testtest")
 
-q4 = Quote.create!(content: "quote4", user: joe)
 
-Quote.create!(content: "quote5", user: joe)
-Quote.create!(content: "quote6", user: joe)
-Quote.create!(content: "quote7", user: joe)
+99.times do |n|
+  email = "example-#{n+1}@hannibal.org"
+  password = "testtest"
+  User.create!(
+               email: email,
+               password:              password,
+               password_confirmation: password
+               )
+end
 
-#upvotes
-q1.upvotes.create! user: joe
-q4.upvotes.create! user: joe
+# Microposts
+users = User.order(:created_at).take(6)
+50.times do
+  content = Faker::Lorem.sentence(5)
+  users.each { |user| user.quotes.create!(content: content) }
+end
+
+# Following relationships
+users = User.all
+user  = users.first
+following = users[2..50]
+followers = users[3..40]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }
+
+
+
+# bob = User.create!(email: 'bob@bob.com', password: 'testtest')
+# joe = User.create!(email: 'joe@joe.com', password: 'testtest')
+
+# q1 = Quote.create!(content: "quote1", user: bob)
+# Quote.create!(content: "quote2", user: bob)
+# Quote.create!(content: "quote3", user: bob)
+
+# q4 = Quote.create!(content: "quote4", user: joe)
+
+# Quote.create!(content: "quote5", user: joe)
+# Quote.create!(content: "quote6", user: joe)
+# Quote.create!(content: "quote7", user: joe)
+
+# #upvotes
+# q1.upvotes.create! user: joe
+# q4.upvotes.create! user: joe
