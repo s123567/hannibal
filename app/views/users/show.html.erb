@@ -1,5 +1,5 @@
 <h2>Hello je suis le profil d'un user, mon id est <%= @user.email %></h2>
-
+<%= render 'shared/follow_form' if current_user %>
 <h3>Mes citations persos sont les suivantes</h3>
 <% @quotes.each do |q| %>
   <li><%= q.content %></li>

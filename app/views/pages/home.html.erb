@@ -2,14 +2,14 @@
 
 <%= render 'shared/error_messages' %>
 
-<h1>Bienvenue <%= current_user.email %></h1>
+
 <% if @quotes && user_signed_in? %>
+<h1>Bienvenue <%= current_user.email %></h1>
   <p>Ajouter une citation</p>
 <%= render 'shared/quote_form' %>
 
 <section class="stats">
   <%= render 'shared/stats' %>
-  <%= render 'shared/follow_form' %>
 </section>
 
 
