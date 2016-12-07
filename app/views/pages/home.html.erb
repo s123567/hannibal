@@ -1,43 +1,45 @@
-<h1>Page d'accueil d'Hannibal</h1>
+<div class="container">
+  <%= render 'shared/error_messages' %>
+  <% if @quotes && user_signed_in? %>
+  <div class="col-xs-12 col-md-4"></div>
+      <p>Ajouter une citation</p>
+    <%= render 'shared/quote_form' %>
+  <div class="col-xs-12 col-md-4">
+    <h2>Voici MES citations</h2>
+      <% @user_quotes.each do |q| %>
+      <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
+      <% if q.user == current_user %>
+      <li><%= link_to "X", quote_path(q), method: :delete %></li>
+      <% end %>
+      
+      <hr>
+      <% end %>
+  </div>
+  <div class="col-xs-12 col-md-4">
+    <h2>Here are all the quotes I like</h2>
+    <% current_user.upvotes.all.each do |u| %>
+    <li><%= u.quote.content %> de l'utilisateur <%= link_to u.quote.user.email, user_path(u.quote.user_id) %></li>
+      
+    <% end %>
+  </div>
 
-<%= render 'shared/error_messages' %>
-
-
-<% if @quotes && user_signed_in? %>
-<h1>Bienvenue <%= current_user.email %></h1>
-  <p>Ajouter une citation</p>
-<%= render 'shared/quote_form' %>
+  <div class="col-xs-12 col-md-4">
+    <h2>Voici toutes les citations dispo</h2>
+      <% @quotes.each do |q| %>
+          <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
+          <% if @user.upvoted?(q)%>
+             <li><span><%= link_to 'UNLIKE', upvote_path(current_user.upvotes.where(quote: q).first), method: :delete %></span></li>
+            <% else %>
+            <li><span><%= link_to 'LIKE', upvotes_path(quote_id: q.id), method: :post%></span></li>
+          <% end %>
+      <% end %>
+  </div>  
+</div>
 
 <section class="stats">
   <%= render 'shared/stats' %>
 </section>
 
-
-<h2>Voici MES citations</h2>
-  <% @user_quotes.each do |q| %>
-  <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
-  <% if q.user == current_user %>
-  <li><%= link_to "X", quote_path(q), method: :delete %></li>
-  <% end %>
-  
-  <hr>
-  <% end %>
-
-  <h2>Here are all the quotes I like</h2>
-  <% current_user.upvotes.all.each do |u| %>
-  <li><%= u.quote.content %> de l'utilisateur <%= link_to u.quote.user.email, user_path(u.quote.user_id) %></li>
-    
-  <% end %>
-
-  <h2>Voici toutes les citations dispo</h2>
-    <% @quotes.each do |q| %>
-        <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
-        <% if @user.upvoted?(q)%>
-           <li><span><%= link_to 'UNLIKE', upvote_path(current_user.upvotes.where(quote: q).first), method: :delete %></span></li>
-          <% else %>
-          <li><span><%= link_to 'LIKE', upvotes_path(quote_id: q.id), method: :post%></span></li>
-        <% end %>
-    <% end %>
 
 
   <% else %>
