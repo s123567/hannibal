@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
 gem 'simple_form'
 
