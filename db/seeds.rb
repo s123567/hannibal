@@ -8,6 +8,11 @@
 
 
 # Users
+
+User.destroy_all
+Quote.destroy_all
+
+
 User.create!(
              email: "example@hannibal.org",
              password:              "testtest",
