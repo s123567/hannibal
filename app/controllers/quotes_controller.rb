@@ -8,6 +8,7 @@ class QuotesController < ApplicationController
     else
       render 'pages/home'
     end
+
   end
 
   def destroy

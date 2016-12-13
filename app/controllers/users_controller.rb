@@ -3,6 +3,20 @@ before_action :find_user, only:[:destroy]
   def show
     @user = User.find(params[:id])
     @quotes = @user.quotes
+    @total ||= Array.new
+
+    #select liked quotes
+    @total << @user.quotes
+    
+
+    #select user quotes
+
+    # current_user.upvotes.each do |u|
+    #   @total << u.quote.content
+    # end
+
+    # .content + current_user.quotes.content
+
     
   end
 
