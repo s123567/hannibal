@@ -2,7 +2,6 @@
   <%= render 'shared/error_messages' %>
   <% if @quotes && user_signed_in? %>
   <div class="col-xs-12 col-md-4">
-      <p>Ajouter une citation</p>
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-quote-modal-sm">add quote</button>
       <%= render 'shared/quote_form' %>
       <form action="">
@@ -12,19 +11,20 @@
 
   <div class="col-xs-12 col-md-4">
     <h2>Voici MES citations</h2>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".show-quotes-modal-sm">See my quotes</button>
+    <%= render 'shared/quote_list' %>
       <% @user_quotes.each do |q| %>
+      <div class="user_quote_list">
       <li><%= q.content %> from me (<%= q.user_id %>)</li>
       <% if q.user == current_user %>
       <li><%= link_to "X", quote_path(q), method: :delete %></li>
-      <% end %>
-      
+      <% end %>  
       <hr>
+      </div>
+      
       <% end %>
   </div>
   <div class="col-xs-12 col-md-4">
-    <h2>Here are ALLLLLL </h2>
-    
-    <br>
     <h2>Here are all the quotes I like</h2>
     <% current_user.upvotes.all.each do |u| %>
     <li><%= u.quote.content %> de l'utilisateur <%= link_to u.quote.user.email, user_path(u.quote.user_id) %></li>
