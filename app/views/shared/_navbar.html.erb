@@ -17,7 +17,7 @@
         <% if current_user%>
           <li><p>Bienvenue <%= current_user.email %></p></li>
           <li class=""><%= link_to "My Liked"  %></li>
-          <li class=""><%= link_to "My quote"  %></li>
+          <li class=""><%= link_to "My quotes"  %></li>
           <li class=""><%= link_to "All my inspiration"  %></li>
           <li class="active"><%= link_to "logout", destroy_user_session_path, :method => :delete %></li>
           <% else %>

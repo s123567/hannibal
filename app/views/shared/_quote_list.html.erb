@@ -1,16 +1,30 @@
 
-<div class="modal fade show-quotes-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <br>
-      <% @user_quotes.each do |q| %>
-        <li class="user-quote"><%= q.content %> from me (<%= q.user_id %>)</li>
-          <% if q.user == current_user %>
-            <li><%= link_to "X", quote_path(q), method: :delete %></li>
-          <% end %>
-          <hr>
-      <% end %>      
+
+
+<% if @quotes.any? %>
+<% @user_quotes.each_with_index do |quote, index| %>
+    <div class="<!-- modal fade show-quotes-modal-sm" tabindex="-1" role="dialog" aria-labelledby=" -->mySmallModalLabel">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div id="cbp-qtrotator" class="cbp-qtrotator">
+          <div class="cbp-qtcontent <% if index == 0 %> current <% end %>"> 
+            <blockquote>
+            <p><%= quote.content %></p>
+            </blockquote>
+            <% if quote.user == current_user %>
+            <%= link_to "X", quote_path(quote), method: :delete %>
+            <% end %>
+          </div>
+          <span class="cbp-qtprogress"></span> 
+          </div>
+        </div> <!-- modal content -->
+      </div>
+      
     </div>
-  </div>
-</div>
+    <% end %>
+<% end %>
+
+
+
+
 

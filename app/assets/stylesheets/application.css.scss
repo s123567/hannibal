@@ -11,8 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require rotator
  *= require_self
  */
 
  @import "bootstrap-sprockets";
- @import "bootstrap"
+ @import "bootstrap";
+
+ .modal-backdrop {
+    background-color: #EEEEEE;
+ }
