@@ -3,15 +3,16 @@
   <% if @quotes && user_signed_in? %>
     <%= render 'shared/navbar' %>
     <div class="row">
-      <div class="col-xs-4">My qyotes</div>
-      <div class="col-xs-4">My likes</div>
-      <div class="col-xs-4">Inspiration</div>
+      <div class="col-xs-4"><p><%= link_to image_tag('noun_bubble_small.png') %></p>  </div>
+      <div class="col-xs-4"><%= link_to image_tag('noun_bouee_small.png') %></div>
+      <div class="col-xs-4"><%= link_to image_tag('noun_off_small.png') %></div>
     </div>
     <div class="user_action">
       <div class="row">
         <div class="col-xs-6">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-quote-modal-sm">add quote</button>
           <%= render 'shared/quote_form' %>
+          <button type="button" class="btn btn-primary">see all my quotes</button>
         </div>
         <div class="col-xs-6">
           <form action="">
@@ -38,6 +39,7 @@
     </div>
     <div class="col-xs-12 col-md-4">
       <h2>Here are all the quotes I like</h2>
+      <%= render 'shared/animated_modal' %>
         <% current_user.upvotes.all.each do |u| %>
         <li><%= u.quote.content %> de l'utilisateur <%= link_to u.quote.user.email, user_path(u.quote.user_id) %></li>
         <% end %>

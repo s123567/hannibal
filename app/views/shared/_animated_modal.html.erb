@@ -1,0 +1,18 @@
+<body>
+    <!--Call your modal-->
+    <a id="demo01" href="#animatedModal">DEMO01</a>
+
+    <!--DEMO01-->
+    <div id="animatedModal">
+        <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
+        <div class="close-animatedModal"> 
+            CLOSE MODAL
+        </div>
+        <% current_user.upvotes.all.each do |u| %>
+        
+        <div class="modal-content">
+            <li><%= u.quote.content %> de l'utilisateur <%= link_to u.quote.user.email, user_path(u.quote.user_id) %></li>
+        </div>
+        <% end %>
+    </div>
+</body>
