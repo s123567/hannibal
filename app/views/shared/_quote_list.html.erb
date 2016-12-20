@@ -1,6 +1,3 @@
-
-
-
 <% if @quotes.any? %>
 <% @user_quotes.each_with_index do |quote, index| %>
     <div class="<!-- modal fade show-quotes-modal-sm" tabindex="-1" role="dialog" aria-labelledby=" -->mySmallModalLabel">
@@ -11,9 +8,6 @@
             <blockquote>
             <p><%= quote.content %></p>
             </blockquote>
-            <% if quote.user == current_user %>
-            <%= link_to "X", quote_path(quote), method: :delete %>
-            <% end %>
           </div>
           <span class="cbp-qtprogress"></span> 
           </div>

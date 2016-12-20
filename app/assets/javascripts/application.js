@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require rotator
+//= require accordeon
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .

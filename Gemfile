@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'will_paginate', '~> 3.1.0'
+gem "font-awesome-rails"
+
 gem 'better_errors', '~> 2.1', '>= 2.1.1'
 
 gem 'simple_form'
