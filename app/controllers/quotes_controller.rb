@@ -8,16 +8,19 @@ class QuotesController < ApplicationController
     else
       render 'pages/home'
     end
-
   end
 
   def destroy
     @quote = Quote.find(params[:id])
     if @quote.destroy
     redirect_to root_url
-  else
+      else
     render 'pages/error'
+    end
   end
+
+  def index
+    @quotes = current_user.quotes.all
     
   end
 

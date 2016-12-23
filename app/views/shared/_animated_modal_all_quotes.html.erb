@@ -1,14 +1,14 @@
-
+<body>
     <!--Call your modal-->
-    <a id="demo02" href="#animatedTotalquotes">ALLLLL QU</a>
+    <a id="demo01" href="#animatedModal">ALl QUotes</a>
 
     <!--DEMO01-->
-    <div id="animatedTotalquotes">
+    <div id="animatedModal">
         <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
-        <div class="close-animatedTotalquotes"> 
+        <div class="close-animatedModal"> 
             CLOSE MODAL
         </div>
-          <% @quotes.each do |q| %>
+          <% @quotes_for_modal.each do |q| %>
 
             <div class="modal-content">
               <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
@@ -20,6 +20,6 @@
                   <% end %>
             </div> <!-- modal content -->
 
-          <% end %>    
-          <%= will_paginate @quotes %>
+          <% end %> 
     </div>
+</body>

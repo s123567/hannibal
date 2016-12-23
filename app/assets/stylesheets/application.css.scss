@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require rotator
+ *= require google-grid
  *= require font-awesome
  *= require_self
  */
@@ -19,6 +20,4 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- .modal-backdrop {
-    background-color: #EEEEEE;
- }
+

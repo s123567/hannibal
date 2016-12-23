@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :upvotes, only: [:create, :destroy]
 
-  resources :quotes, only: [:create, :destroy]
+  resources :quotes, only: [:create, :destroy, :index]
   resources :relationships, only: [:create, :destroy]
   devise_scope :user do 
     get '/users/sign_out' => 'devise/sessions#destroy'
