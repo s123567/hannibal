@@ -18,3 +18,9 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+    $(document).ready(function() {
+        $('#showmenu').click(function() {
+                $('.menu').slideToggle("fast");
+        });
+    });

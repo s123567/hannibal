@@ -2,22 +2,43 @@
   <%= render 'shared/error_messages' %>
   <% if @quotes && user_signed_in? %>
     <%= render 'shared/navbar' %>
-    <div class="row">
-      <div class="col-xs-4"><p><%= link_to image_tag('noun_bubble_small.png') %></p>  </div>
-      <div class="col-xs-4"><%= link_to image_tag('noun_bouee_small.png') %></div>
-      <div class="col-xs-4"><%= link_to image_tag('noun_off_small.png') %></div>
-    </div>
     <div class="user_action">
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-12">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add-quote-modal-sm">add quote</button>
           <%= render 'shared/quote_form' %>
-          <button type="button" class="btn btn-primary">see all my quotes</button>
-        </div>
-        <div class="col-xs-6">
-          <form action="">
-          <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Search for inspiration...">
-          </form>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-quotes">see all my quotes</button>
+          <%= render 'shared/see_all_user_quotes' %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-likes">see all my likes</button>
+          <%= render 'shared/see_all_user_likes' %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-user-network">see all my followers/following</button>
+          <%= render 'shared/see_user_network' %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".search-inspiration">Search inspiration</button>
+          
+          <div id="showmenu">Search</div>
+          <div class="menu" style="display:none"><form action="">
+            <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Search for inspiration...">
+            <%= submit_tag "looook" %>
+            </form>
+            <div class="col-xs-12 col-md-4">
+              <h2>Voici toutes les citations dispo</h2>
+                <% @quotes.each do |q| %>
+                  <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
+                    <% if @user.upvoted?(q)%>
+                      <li><span><%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
+                  '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), method: :delete %></span></li>
+                    <% else %>
+                      <li><span><%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
+                  '.html_safe, upvotes_path(quote_id: q.id), method: :post%></span></li>
+                    <% end %>
+                <% end %>
+              <%= will_paginate @quotes %>
+            </div> <!-- col xs 12 md 4 --> 
+          </div>
+
+          <%= render 'shared/search-inspiration' %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".search-inspiration">QUOTES CINEMA</button>
+          <%= render 'shared/search-inspiration' %>
         </div>
       </div>
     
@@ -26,23 +47,14 @@
     <div class="col-xs-12 col-md-4">
       <h2>Voici MES citations</h2>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".show-quotes-modal-sm">See my quotes</button>
+
+
         <%= render 'shared/quote_list' %>
-          <% @user_quotes.each do |q| %>
-          <div class="user_quote_list">
-            <li><%= q.content %> from me (<%= q.user_id %>)</li>
-            <% if q.user == current_user %>
-              <li><%= link_to '<i class="fa fa-times" aria-hidden="true"></i>'.html_safe, quote_path(q), method: :delete %></li>
-            <% end %>  
-            <hr>
-          </div>
-          <% end %> <!-- @user_quotes -->
+          
     </div>
     <div class="col-xs-12 col-md-4">
       <h2>Here are all the quotes I like</h2>
       <%= render 'shared/animated_modal' %>
-        <% current_user.upvotes.all.each do |u| %>
-        <li><%= u.quote.content %> de l'utilisateur <%= link_to u.quote.user.email, user_path(u.quote.user_id) %></li>
-        <% end %>
     </div>
 
     <div class="col-xs-12 col-md-4">

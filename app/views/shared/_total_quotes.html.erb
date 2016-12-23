@@ -1,0 +1,20 @@
+<body>
+    <!--Call your modal-->
+    <a id="demo02" href="#animatedModale">QUOTES I LIKE</a>
+
+    <!--DEMO01-->
+    <div id="animatedModale">
+        <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
+        <div class="close-animatedModale"> 
+            CLOSE MODAL
+        </div>
+        <% current_user.upvotes.all.each do |u| %>
+        
+        <div class="modal-content">
+            <li><p class="quote-liked"><%= u.quote.content %> de l'utilisateur <%= link_to u.quote.user.email, user_path(u.quote.user_id) %></p></li>
+                <li><span><%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
+            '.html_safe, upvote_path(u), method: :delete %></span></li>
+        </div>
+        <% end %>
+    </div>
+</body>

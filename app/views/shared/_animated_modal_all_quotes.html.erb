@@ -1,0 +1,25 @@
+
+    <!--Call your modal-->
+    <a id="demo02" href="#animatedTotalquotes">ALLLLL QU</a>
+
+    <!--DEMO01-->
+    <div id="animatedTotalquotes">
+        <!--THIS IS IMPORTANT! to close the modal, the class name has to match the name given on the ID  class="close-animatedModal" -->
+        <div class="close-animatedTotalquotes"> 
+            CLOSE MODAL
+        </div>
+          <% @quotes.each do |q| %>
+
+            <div class="modal-content">
+              <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
+                <% if @user.upvoted?(q)%>
+                  <li><span><%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>'.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), method: :delete %></span></li>
+                <% else %>
+                  <li><span><%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
+                    '.html_safe, upvotes_path(quote_id: q.id), method: :post%></span></li>
+                  <% end %>
+            </div> <!-- modal content -->
+
+          <% end %>    
+          <%= will_paginate @quotes %>
+    </div>
