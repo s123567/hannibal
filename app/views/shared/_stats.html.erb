@@ -13,3 +13,27 @@
     followers
   </a>
 </div>
+
+<div class="follow_unfollow_list">
+  <div class="following_list">
+    <% if @user.following.count != 0 %>
+    <p>You follow these people:</p>
+      <% @user.following.each do |following|  %>
+        <li><%= following.email %></li>
+      <% end %>
+      <% else %>
+      <p>You do not follow anybody</p>
+    <% end %>  
+  </div>
+  <div class="follower_list">
+    <% if @user.followers.count != 0 %>
+    <p>You are being watched by these people people:</p>
+    <% @user.followers.each do |followers|  %>
+      <li><%= followers.email %></li>
+    <% end %>
+    <% else %>
+    <p>You have no followers</p>
+  <% end %>
+  </div>
+  
+</div>
