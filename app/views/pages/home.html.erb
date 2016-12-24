@@ -10,9 +10,7 @@
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-likes">see all my likes</button>
           <%= render 'shared/see_all_user_likes' %>
           <br>
-          <span>
-            <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Search for inspiration...">
-          </span>
+          
           <div id="showmenu">Search</div>
           <div class="menu" style="display:none"><form action="">
             <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Search for inspiration...">
@@ -23,6 +21,7 @@
         </div>
         <div class="col-xs-12 col-sm-4">
           <h2>ALL quotes</h2>
+          <div id="total-quotes-container" class="">
             <% @quotes.each do |q| %>
               <li><%= q.content %> de l'utilisateur<%= q.user_id %></li>
                 <% if @user.upvoted?(q)%>
@@ -33,7 +32,8 @@
               '.html_safe, upvotes_path(quote_id: q.id), method: :post%></span></li>
                 <% end %>
             <% end %>
-          <%= will_paginate @quotes %>
+          </div>
+          
         </div>
 
         <div class="col-xs-12 col-sm-4">
@@ -56,9 +56,6 @@
 
         <%= render 'shared/quote_list' %>
           
-    </div>
-    <div class="col-xs-12 col-md-4">
-      <%= render 'shared/animated_modal_all_quotes' %>
     </div>
   </div> <!-- row -->
 

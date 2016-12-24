@@ -22,7 +22,7 @@
 
 
     $(document).ready(function() {
-        $('#showmenu').click(function() {
-                $('.menu').slideToggle("fast");
-        });
+      $('#showmenu').click(function() {
+        $('.menu').slideToggle("fast");
+      });
     });

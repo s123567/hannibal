@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def home
     @quote = Quote.new
-    @quotes = Quote.search(params[:keyword]).paginate(:page => params[:page], :per_page => 5)
+    @quotes = Quote.search(params[:keyword])
     @user = current_user
 
     @random_quote = @quotes.sample
