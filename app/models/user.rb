@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :quotes
   has_many :upvotes
+  validates :name, presence: true, length: {maximum: 50}
 
   has_many :active_relationships, class_name: "Relationship",
                                  foreign_key: "follower_id",

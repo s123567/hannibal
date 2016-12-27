@@ -14,11 +14,11 @@
           <br>
           <button type="button" id="showmenu" class="btn btn-primary">Some inspiration...</button>
           <!-- <div id="showmenu">Search</div> -->
-          <div class="menu" style="display:none"><form action="">
+          <div class="menu" style="display:none">
+            <form action="">
             <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Enter a keyword ...">
             <%= submit_tag "look" %>
             </form>
-
           </div>
         </div>
         <div class="col-xs-12 col-sm-5">
@@ -28,13 +28,13 @@
             <div class="blockquote middle-margin">
               <li class="home-page-allquotes"><%= q.content %></li>
                 <% if @user.upvoted?(q)%>
-                  <li><span> <%= link_to q.user_id, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
-              '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), method: :delete %></span></li>
+                  <li><span><%= link_to q.user.name, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
+              '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), class:'yellow', method: :delete %></span></li>
                 <% else %>
-                  <li><span> <%= link_to q.user_id, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
-              '.html_safe, upvotes_path(quote_id: q.id), method: :post%></span></li>
+                  <li><span> <%= link_to q.user.name, user_path(q.user_id), class:'gray' %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
+              '.html_safe, upvotes_path(quote_id: q.id), class:'yellow', method: :post%></span></li>
                 <% end %>
-                <hr>
+                <%= image_tag("noun_quotes.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
             </div>
             <% end %>
           </div>
@@ -59,6 +59,8 @@
       <h1>Hannibal</h1>
       <p>just sign in!</p>  
       <p><%= link_to image_tag('noun_login_small.png'), new_user_session_path %></p>  
+      <p>sign UP!</p>  
+      <p><%= link_to image_tag('noun_login_small.png'), new_user_registration_path %></p>  
     </div>
     
   </div>

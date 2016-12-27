@@ -15,15 +15,18 @@ Quote.destroy_all
 
 User.create!(
              email: "example@hannibal.org",
+             name: "hannibal",
              password:              "testtest",
              password_confirmation: "testtest")
 
 
 15.times do |n|
   email = "example-#{n+1}@hannibal.org"
+  name = "hannibal-#{n+1}"
   password = "testtest"
   User.create!(
                email: email,
+               name: name,
                password:              password,
                password_confirmation: password
                )
@@ -45,10 +48,22 @@ following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
 
-lee = User.create!(email: 'lee@lee.com', password: 'testest')
+lee = User.create!(email: 'lee@lee.com', name:"Bruce", password: 'testtest')
 
 File.open("public/lee.txt", "r").each_line do |quote|
   Quote.create!(content: quote.chomp, user:lee)
+end
+
+einstein = User.create!(email: 'einstein@einstein.com', name:'Albert', password: 'testtest')
+
+File.open("public/einstein.txt", "r").each_line do |quote|
+  Quote.create!(content: quote.chomp, user:einstein)
+end
+
+wilde = User.create!(email: 'wilde@wilde.com', name:'Oscar', password: 'testtest')
+
+File.open("public/wilde.txt", "r").each_line do |quote|
+  Quote.create!(content: quote.chomp, user:wilde)
 end
 
 # bob = User.create!(email: 'bob@bob.com', password: 'testtest')
