@@ -19,7 +19,7 @@ User.create!(
              password_confirmation: "testtest")
 
 
-99.times do |n|
+15.times do |n|
   email = "example-#{n+1}@hannibal.org"
   password = "testtest"
   User.create!(
@@ -31,7 +31,7 @@ end
 
 # Microposts
 users = User.order(:created_at).take(6)
-50.times do
+10.times do
   content = Faker::Lorem.sentence(5)
   users.each { |user| user.quotes.create!(content: content) }
 end
@@ -39,12 +39,17 @@ end
 # Following relationships
 users = User.all
 user  = users.first
-following = users[2..50]
-followers = users[3..40]
+following = users[2..12]
+followers = users[3..10]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
 
 
+lee = User.create!(email: 'lee@lee.com', password: 'testest')
+
+File.open("public/lee.txt", "r").each_line do |quote|
+  Quote.create!(content: quote.chomp, user:lee)
+end
 
 # bob = User.create!(email: 'bob@bob.com', password: 'testtest')
 # joe = User.create!(email: 'joe@joe.com', password: 'testtest')
