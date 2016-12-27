@@ -43,6 +43,15 @@
 
         <div class="col-xs-12 col-sm-5">
           <h2 class='small-margin text-center'>FEED</h2>
+          <% if @feed_items.any? %>
+            <ol>
+              <%@feed_items.each do |item| %>
+                <li><%= item.content %></li>
+                <p>Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id) %></p>
+              <% end %>
+            </ol>
+            <%= will_paginate @feed_items %>
+          <% end %>
         </div>
 
         </div> <!-- ROW -->        

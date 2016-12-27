@@ -19,7 +19,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
 
 
-   # Follows a user.
+# Follows a user.
      def follow(other_user)
        active_relationships.create(followed_id: other_user.id)
      end
@@ -35,9 +35,16 @@ class User < ApplicationRecord
      end
 
 
+     def upvoted?(quote)
+       quote.upvotes.where(user: self).any?
+     end
+
+     def feed
+      following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+
+      Quote.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)
+       
+     end
 
 
-  def upvoted?(quote)
-   quote.upvotes.where(user: self).any?
-  end
 end
