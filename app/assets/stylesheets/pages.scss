@@ -4,8 +4,24 @@
 
 /*Home page*/
 
+#home-user-actions {
+  display: flex;
+  flex-direction:column;
+  justify-content: space-around;
+}
+
+.home-page-height {
+  display: flex
+}
+
+.home-page-allquotes {
+  font-size: 2em;
+  padding: 0 0.3em;
+  color: white;
+}
+
 body { 
-  background: url('mountains.jpg') no-repeat center center fixed; 
+  background: url('Mountains_Landscape_darkened.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -26,11 +42,24 @@ body {
 }
 
 #total-quotes-container{
-    background: lightgray;
+    background-color: transparent;
     height: 300px;
     overflow-y: scroll;
+    border: 1px solid white;
+    border-radius: 4px;
 }
 
 li {
   list-style-type: none;
+}
+
+/*custom Padding and margin*/
+.small-margin {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.middle-margin {
+ margin-top: 10px;
+ margin-bottom: 10px; 
 }

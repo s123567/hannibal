@@ -3,41 +3,46 @@
   <% if @quotes && user_signed_in? %>
     <%= render 'shared/navbar' %>
       <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-quotes">see all my quotes</button>
+
+        <div id="home-user-actions" class="col-xs-12 col-sm-2 small-margin">
+          <h2 class='small-margin text-center'>Display...</h2>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-quotes">All I wrote</button>
           <%= render 'shared/see_all_user_quotes' %>
           <br>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-likes">see all my likes</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-likes">All I liked</button>
           <%= render 'shared/see_all_user_likes' %>
           <br>
-          
-          <div id="showmenu">Search</div>
+          <button type="button" id="showmenu" class="btn btn-primary">Some inspiration...</button>
+          <!-- <div id="showmenu">Search</div> -->
           <div class="menu" style="display:none"><form action="">
-            <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Search for inspiration...">
-            <%= submit_tag "looook" %>
+            <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Enter a keyword ...">
+            <%= submit_tag "look" %>
             </form>
 
           </div>
         </div>
-        <div class="col-xs-12 col-sm-4">
-          <h2>ALL quotes</h2>
+        <div class="col-xs-12 col-sm-5">
+          <h2 class='small-margin text-center'>ALL quotes</h2>
           <div id="total-quotes-container" class="">
             <% @quotes.each do |q| %>
-              <li><%= q.content %> de l'utilisateur<%= link_to q.user_id, user_path(q.user_id) %></li>
+            <div class="blockquote middle-margin">
+              <li class="home-page-allquotes"><%= q.content %></li>
                 <% if @user.upvoted?(q)%>
-                  <li><span><%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
+                  <li><span> <%= link_to q.user_id, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
               '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), method: :delete %></span></li>
                 <% else %>
-                  <li><span><%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
+                  <li><span> <%= link_to q.user_id, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
               '.html_safe, upvotes_path(quote_id: q.id), method: :post%></span></li>
                 <% end %>
+                <hr>
+            </div>
             <% end %>
           </div>
           
         </div>
 
-        <div class="col-xs-12 col-sm-4">
-          <h2>FEED</h2>
+        <div class="col-xs-12 col-sm-5">
+          <h2 class='small-margin text-center'>FEED</h2>
         </div>
 
         </div> <!-- ROW -->        
