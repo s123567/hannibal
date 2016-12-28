@@ -12,6 +12,18 @@
   color: #D6D7DC;
 }
 
+.red {
+  color :#BF3E3E;
+}
+
+.whitish {
+  color: #F6F6F6;
+}
+
+.bright-red {
+  color: #F65D5D;
+}
+
 #home-user-actions {
   display: flex;
   flex-direction:column;
@@ -50,8 +62,7 @@ body {
     background-color: transparent;
     height: 65vh;
     overflow-y: scroll;
-    border: 1px solid #F6CF8E;
-    border-radius: 10px;
+    border-bottom: 1px solid #BF3E3E;
 }
 
 li {
@@ -70,4 +81,30 @@ li {
 .middle-margin {
  margin-top: 10px;
  margin-bottom: 10px; 
+}
+
+
+
+/*MOBILE*/
+
+.inline li{
+  display: inline-block;
+  padding: 2px 4px;
+  list-style-type: none;
+}
+
+.flex-container {
+  display: flex;
+  justify-content:center;
+  margin: 5px 0 5px;
+}
+
+.actions-grid {
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  color:#d9d9d9;
+  font-size: 2em;
+  border: 1px solid #F6F6F6;
+  height: 25vh;
 }

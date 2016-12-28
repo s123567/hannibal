@@ -16,12 +16,12 @@
       <ul class="nav navbar-nav">
         <% if current_user%>
           <li class=""><%= link_to "Bienvenue " + current_user.name.capitalize  %></li>
-          <li><%= link_to "Add a quote", '.add-quote-modal-sm', "data-toggle" => "modal", 'data-target' => '.add-quote-modal-sm' %></li>
-          <li><%= link_to "My Network", '.see-user-network', "data-toggle" => "modal", 'data-target' => '.see-user-network' %></li>
-          <li><%= link_to "My Profile", edit_user_registration_path %></li>
-          <li class="active"><%= link_to "logout", destroy_user_session_path, :method => :delete %></li>
+          <li><%= link_to image_tag("add_quote.png", size: '30x30'), ".add-quote-modal-sm", :data => { :toggle =>"modal" } %></li>
+          <li><%= link_to image_tag("network.png", size: '30x30'), '.see-user-network', :data => { :toggle =>"modal" } %></li>
+          <li><%= link_to image_tag("user.png", size: '30x30'), edit_user_registration_path %></li>
+          <li><%= link_to image_tag("logout.png", size: '30x30'), destroy_user_session_path, :method => :delete %></li>
           <% else %>
-          <li class=""><%= link_to "login", new_user_session_path %></li>
+          <li class=""><%= link_to image_tag("login.png", size: '30x30'), new_user_session_path %></li>
           <li class=""><%= link_to "Register", new_user_registration_path %></li>
           <% end %>
           <!--  -->
