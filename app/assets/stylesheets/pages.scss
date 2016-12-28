@@ -53,6 +53,14 @@ body {
     border-radius: 10px;
 }
 
+.total-quotes-container{
+    background-color: transparent;
+    height: 65vh;
+    overflow-y: scroll;
+    border: 1px solid #F6CF8E;
+    border-radius: 10px;
+}
+
 li {
   list-style-type: none;
 }

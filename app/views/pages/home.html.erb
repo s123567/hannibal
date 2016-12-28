@@ -21,48 +21,57 @@
             </form>
           </div>
         </div>
-        <div class="col-xs-12 col-sm-5">
-          <h2 class='small-margin text-center'>ALL quotes</h2>
-          <div id="total-quotes-container" class="">
-            <% @quotes.each do |q| %>
-            <div class="blockquote middle-margin">
-              <li class="home-page-allquotes"><%= q.content %></li>
-                <% if @user.upvoted?(q)%>
-                  <li><span><%= link_to q.user.name, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
-              '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), class:'yellow', method: :delete %></span></li>
-                <% else %>
-                  <li><span> <%= link_to q.user.name, user_path(q.user_id), class:'gray' %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
-              '.html_safe, upvotes_path(quote_id: q.id), class:'yellow', method: :post%></span></li>
-                <% end %>
-                <%= image_tag("noun_quotes.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
-            </div>
+
+        <div class="col-xs-12 col-sm-10">
+          <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#all" aria-controls="home" role="tab" data-toggle="tab"><%= image_tag("noun_quotes.png", size: "16x16", alt: "Quote separation", class:'center-block') %></a></li>
+    <li role="presentation"><a href="#feed" aria-controls="feed" role="tab" data-toggle="tab">feed</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="all">
+      <div class="total-quotes-container">
+        <% @quotes.each do |q| %>
+        <div class="blockquote middle-margin">
+          <li class="home-page-allquotes"><%= q.content %></li>
+            <% if @user.upvoted?(q)%>
+              <li><span><%= link_to q.user.name, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
+          '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), class:'yellow', method: :delete %></span></li>
+            <% else %>
+              <li><span> <%= link_to q.user.name, user_path(q.user_id), class:'gray' %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
+          '.html_safe, upvotes_path(quote_id: q.id), class:'yellow', method: :post%></span></li>
             <% end %>
-          </div>
-          
+            <%= image_tag("noun_quotes.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
         </div>
-
-        <div class="col-xs-12 col-sm-5">
-          <h2 class='small-margin text-center'>FEED</h2>
-          <% if @feed_items.any? %>
-            <ol>
-              <%@feed_items.each do |item| %>
-                <li><%= item.content %></li>
-                <p>Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id) %></p>
-              <% end %>
-            </ol>
-            <%= will_paginate @feed_items %>
+        <% end %>
+      </div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade" id="feed">
+      <% if @feed_items.any? %>
+        <ol>
+          <%@feed_items.each do |item| %>
+            <li><%= item.content %></li>
+            <p>Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id) %></p>
           <% end %>
-        </div>
+        </ol>
+        <%= will_paginate @feed_items %>
+      <% end %>
+    </div>
+  </div>
 
+</div>
+        </div>
         </div> <!-- ROW -->        
+        <%= render 'shared/quote_form' %>
+        <%= render 'shared/see_user_network' %>
     </div> <!-- user action -->
 </div> <!-- container -->
 
   
-  <%= render 'shared/quote_form' %>
-  <%= render 'shared/see_user_network' %>
-
   <% else %>
+
   <div class="container">
     <div class="visitor-welcome">
       <h1>Hannibal</h1>
