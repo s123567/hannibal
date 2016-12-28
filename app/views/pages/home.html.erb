@@ -32,7 +32,7 @@
   <!-- Tab panes -->
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane fade in active" id="all">
-      <div class="total-quotes-container">
+      <div class="quotes-container">
         <% @quotes.each do |q| %>
         <div class="blockquote middle-margin">
           <li class="home-page-allquotes"><%= q.content %></li>
@@ -51,12 +51,13 @@
     <div role="tabpanel" class="tab-pane fade" id="feed">
       <% if @feed_items.any? %>
         <ol>
-          <%@feed_items.each do |item| %>
-            <li><%= item.content %></li>
+          <div class="quotes-container">
+            <%@feed_items.each do |item| %>
+            <li class="home-page-allquotes"><%= item.content %></li>
             <p>Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id) %></p>
-          <% end %>
+            <% end %>
+          </div>
         </ol>
-        <%= will_paginate @feed_items %>
       <% end %>
     </div>
   </div>

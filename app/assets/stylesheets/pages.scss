@@ -29,7 +29,7 @@
 }
 
 body { 
-  background: url('Mountains_Landscape_darkened.jpg') no-repeat center center fixed; 
+  background: url('Mountains_Landscape_blurred.jpg') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -45,15 +45,8 @@ body {
 }
 
 
-#total-quotes-container{
-    background-color: transparent;
-    height: 65vh;
-    overflow-y: scroll;
-    border: 1px solid #F6CF8E;
-    border-radius: 10px;
-}
 
-.total-quotes-container{
+.quotes-container{
     background-color: transparent;
     height: 65vh;
     overflow-y: scroll;
