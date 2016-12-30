@@ -1,0 +1,18 @@
+/*COLORS*/
+$dark-grey: #2B2E36;
+$red: #BF3E3E;
+$gray: #D6D7DC;
+$whitish: #F6F6F6;
+
+.navbar-custom {
+    background-color:transparent;
+}
+
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    background-color: $red;
+}
+
+$nav-tabs-border-color: $red;
+$nav-tabs-active-link-hover-border-color: $red;
+$nav-tabs-active-link-hover-bg: $dark-grey;

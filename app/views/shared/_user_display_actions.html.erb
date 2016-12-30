@@ -10,7 +10,7 @@
       <div class="col-xs-6 actions-grid">Read Likes</div>
       <div class="col-xs-6 actions-grid">Netword</div>
       <div class="col-xs-6 actions-grid">Search</div>
-      <div class="col-xs-6 actions-grid"><%= link_to image_tag("trending.png", size: '100x100'), ".mobile-feed-sm", :data => { :toggle =>"modal" } %>
+      <div class="col-xs-6 actions-grid"><%= link_to image_tag("trending_white_600.png", size: '100x100'), ".mobile-feed-sm", :data => { :toggle =>"modal" } %>
         <%= render 'modal/mobile_feed' %>
       </div>
       <div class="col-xs-6 actions-grid">ALl quotes</div>
@@ -21,11 +21,11 @@
   <h2 class='small-margin text-center'>Display...</h2>
     <%= render 'modal/see_all_user_quotes' %>
   <br>
-  <li><%= link_to image_tag("all_quotes.png", size: '150x150'), ".see-all-user-quotes", :data => { :toggle =>"modal" } %></li>
+  <li><%= link_to image_tag("all_quotes_white_600.png", size: '150x150'), ".see-all-user-quotes", :data => { :toggle =>"modal" } %></li>
   <li class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="popover" data-content="Display all your quotes">
   </li>
   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-likes">All I liked</button> -->
-  <%= link_to image_tag("heart_strip_small.png", size: '150x150'), ".see-all-user-likes", :data => { :toggle =>"modal" } %>
+  <%= link_to image_tag("like_white_600.png", size: '150x150'), ".see-all-user-likes", :data => { :toggle =>"modal" } %>
     <%= render 'modal/see_all_user_likes' %>
   <br>
   <button type="button" id="showmenu" class="btn btn-primary">Some inspiration...</button>

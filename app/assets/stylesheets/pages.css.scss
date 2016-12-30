@@ -4,9 +4,16 @@
 
 /*Home page*/
 
-.yellow {
-  color: #F6CF8E;
-}
+
+$red: #BF3E3E;
+$yellow:#F6CF8E;
+
+.nav-tabs-border-color { 
+  color: $red;}
+
+.nav-tabs-active-link-hover-color {
+  color: blue;
+} 
 
 .gray {
   color: #D6D7DC;
@@ -62,7 +69,7 @@ body {
     background-color: transparent;
     height: 65vh;
     overflow-y: scroll;
-    border-bottom: 1px solid #BF3E3E;
+    border-bottom: 1px solid $red;
 }
 
 li {

@@ -1,6 +1,7 @@
 <ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#all" aria-controls="home" role="tab" data-toggle="tab"><%= image_tag("all_quotes.png", size: "25x25", alt: "Quote separation", class:'center-block') %></a></li>
-  <li role="presentation"><a href="#feed" aria-controls="feed" role="tab" data-toggle="tab"><%= image_tag("trending.png", size: "25x25", alt: "Quote separation", class:'center-block') %></a></li>
+  <li role="presentation" class="active"><a href="#all" aria-controls="home" role="tab" data-toggle="tab"><%= image_tag("all_quotes_white_600.png", size: "25x25", alt: "Quote separation", class:'center-block') %></a></li>
+  <li role="presentation"><a href="#feed" aria-controls="feed" role="tab" data-toggle="tab"><%= image_tag("trending_white_600.png", size: "25x25", alt: "Quote separation", class:'center-block') %></a></li>
+
 </ul>
 
 <!-- Tab panes -->
@@ -17,7 +18,7 @@
             <li class=""><span> <%= link_to q.user.name, user_path(q.user_id), class:'gray' %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
         '.html_safe, upvotes_path(quote_id: q.id), class:'red', method: :post%></span></li>
           <% end %>
-          <%= image_tag("noun_quotes.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
+          <%= image_tag("quotes_red_600.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
       </div>
       <% end %>
     </div>
@@ -30,7 +31,7 @@
           <li class="home-page-allquotes"><%= item.content %></li>
           <p class="gray">Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id), class:'red' %></p>
           <br>
-          <%= image_tag("noun_quotes.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
+          <%= image_tag("quotes_red_600.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
           <% end %>
         </div>
       </ol>

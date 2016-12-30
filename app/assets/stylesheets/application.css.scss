@@ -10,12 +10,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require rotator
- *= require google-grid
- *= require font-awesome
  *= require_self
  */
-
+ @import "pages";
+ @import "custom";
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome"
+ 
+ /*All Icons provided by Gregor Črešnar, from the nounproject*/
+
