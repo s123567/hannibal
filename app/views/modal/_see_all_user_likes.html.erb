@@ -1,14 +1,12 @@
 
 <div class="modal fade see-all-user-likes" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content user-quotes">
-      <br>
+    <div class="modal-content list-quotes">
       <% current_user.upvotes.all.each do |u| %>
-      <li class="text-center"><%= u.quote.content %></li>
-      <li><span><%= link_to u.quote.user.name, user_path(u.quote.user_id) %></span><span><%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
-      '.html_safe, upvote_path(u), method: :delete %></span></li>
+      <li class="text-center">"<%= u.quote.content %>"</li>
+      <p class="modal-info"><p><%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>'.html_safe, upvote_path(u), class:'likes', method: :delete %> <%= link_to u.quote.user.name, user_path(u.quote.user_id) %></p>
+      <%= image_tag("quotes_red_600.png", size: "16x16", alt: "Quote separation", class:'center-block') %> 
       <% end %>
-      <hr>
     </div>
   </div>
 </div>

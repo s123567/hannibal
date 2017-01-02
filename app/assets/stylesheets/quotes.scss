@@ -3,6 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.user-quotes li {
-  font-size: 4em;
+.modal-info > p {
+  font-size: 0.8em;
+  padding-left: 1em;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+.mobile-modal-quote {
+  font-size: 0.55em;
+}
+
+.mobile-modal-info {
+  font-size: 0.3em;
 }

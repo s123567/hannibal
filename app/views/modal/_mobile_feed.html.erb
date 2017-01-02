@@ -1,17 +1,15 @@
 <div class="modal fade mobile-feed-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
+    <div class="modal-content list-quotes">
       <% if @feed_items.any? %>
-            <ol>
               <div class="quotes-container">
                 <%@feed_items.each do |item| %>
-                <li class="home-page-allquotes"><%= item.content %></li>
-                <p class="">Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id) %></p>
+                <li class="mobile-modal-quote"><%= item.content %></li>
+                <p class="mobile-modal-info">Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id) %></p>
                 <br>
-                <%= image_tag("noun_quotes.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
+                <%= image_tag("quotes_red_600.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
                 <% end %>
               </div>
-            </ol>
           <% end %>
     </div>
   </div>

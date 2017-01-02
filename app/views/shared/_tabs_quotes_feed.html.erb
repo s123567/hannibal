@@ -10,13 +10,19 @@
     <div class="quotes-container">
       <% @quotes.each do |q| %>
       <div class="blockquote middle-margin">
-        <li class="home-page-allquotes"><%= q.content %></li>
+        <li class="list-quotes"><%= q.content %></li>
           <% if @user.upvoted?(q)%>
-            <li class="pull-right"><span><%= link_to q.user.name, user_path(q.user_id) %> <%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
-        '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), class:'red', method: :delete %></span></li>
+          <div class="">
+                <li class=""><span><%= link_to 'By ' + q.user.name, user_path(q.user_id), class:'author_of_quote' %> <%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>
+            '.html_safe, upvote_path(current_user.upvotes.where(quote: q).first), class:'likes', method: :delete %></span></li>
+          </div>
+            
           <% else %>
-            <li class=""><span> <%= link_to q.user.name, user_path(q.user_id), class:'gray' %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
-        '.html_safe, upvotes_path(quote_id: q.id), class:'red', method: :post%></span></li>
+          <div class="">
+            <li class=""><span><%= link_to 'By ' + q.user.name, user_path(q.user_id), class:'author_of_quote' %> <%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>
+            '.html_safe, upvotes_path(quote_id: q.id), class:'likes', method: :post%></span></li>
+          </div>
+
           <% end %>
           <%= image_tag("quotes_red_600.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
       </div>
@@ -25,16 +31,15 @@
   </div>
   <div role="tabpanel" class="tab-pane fade" id="feed">
     <% if @feed_items.any? %>
-      <ol>
         <div class="quotes-container">
           <%@feed_items.each do |item| %>
-          <li class="home-page-allquotes"><%= item.content %></li>
-          <p class="gray">Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id), class:'red' %></p>
-          <br>
-          <%= image_tag("quotes_red_600.png", size: "16x16", alt: "Quote separation", class:'center-block') %>
+          <li class="list-quotes"><%= item.content %></li>
+          <p class="author_of_quote">Added <%= time_ago_in_words(item.created_at) %> ago by <%= link_to item.user.name, user_path(item.user_id) %></p>
+          <div class="sm-up-space">
+            <%= image_tag("quotes_red_600.png", size: "16x16", alt: "Quote separation", class:'center-block') %>  
+          </div>
           <% end %>
         </div>
-      </ol>
     <% end %>
   </div>
 </div>

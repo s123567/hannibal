@@ -2,50 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*Home page*/
+/*GENERAL*/
 
-
-$red: #BF3E3E;
-$yellow:#F6CF8E;
-
-.nav-tabs-border-color { 
-  color: $red;}
-
-.nav-tabs-active-link-hover-color {
-  color: blue;
-} 
-
-.gray {
-  color: #D6D7DC;
-}
-
-.red {
-  color :#BF3E3E;
-}
-
-.whitish {
-  color: #F6F6F6;
-}
-
-.bright-red {
-  color: #F65D5D;
-}
-
-#home-user-actions {
-  display: flex;
-  flex-direction:column;
-  justify-content: space-between;
-}
-
-.home-page-height {
-  display: flex
-}
-
-.home-page-allquotes {
-  font-size: 2em;
-  padding: 0 0.3em;
-  color: white;
-}
 
 body { 
   background: url('Mountains_Landscape_blurred.jpg') no-repeat center center fixed; 
@@ -55,31 +13,43 @@ body {
   background-size: cover;
 }
 
-.visitor-welcome {
-  background-color: transparent;
-}
-
-.modal-backdrop {
-   background-color: #EEEEEE;
-}
-
-
-
-.quotes-container{
-    background-color: transparent;
-    height: 65vh;
-    overflow-y: scroll;
-    border-bottom: 1px solid $red;
-}
-
 li {
   list-style-type: none;
 }
 
-.author_of_quote {
-  color: red;
+.hr-red {
+  border-color: $red;
+
 }
-/*custom Padding and margin*/
+.likes {
+  color: $bright-red;
+}
+
+.delete {
+ color: $red; 
+}
+
+.actions {
+  font-family: 'Poiret One', serif;
+}
+
+/*SPACING*/
+
+.sm-up-space {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.md-up-space {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.lg-up-space {
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
 .small-margin {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -90,6 +60,60 @@ li {
  margin-bottom: 10px; 
 }
 
+/*Home page*/
+#main-container {
+  display: flex;
+}
+
+#home-user-actions {
+  display: flex; 
+}
+
+#desktop-main-actions {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: space-between;
+  
+  li {
+    text-align: center;
+  }
+}
+
+
+.list-quotes {
+  font-size: 2em;
+  padding: 0 0.3em;
+  color: $whitish;
+  font-family: 'Merriweather', 'Georgia', 'Times New Roman', serif ;
+
+}
+
+
+/*MODAL*/
+.modal-backdrop {
+   background-color: #EEEEEE;
+}
+
+
+.visitor-welcome {
+  background-color: transparent;
+}
+
+
+.quotes-container{
+    background-color: transparent;
+    height: 65vh;
+    overflow-y: scroll;
+    border-bottom: 1px solid $red;
+}
+
+
+
+.author_of_quote {
+  color: $gray;
+  padding: 0 2em;
+}
 
 
 /*MOBILE*/
@@ -112,6 +136,36 @@ li {
   align-items:center;
   color:#d9d9d9;
   font-size: 2em;
-  border: 1px solid #F6F6F6;
   height: 25vh;
+}
+
+
+
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 979px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+
+  #desktop-main-actions {
+    display: none;
+  }
+
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 320px) {
+
+
+
 }

@@ -1,12 +1,13 @@
 
 <div class="modal fade see-all-user-quotes" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content user-quotes">
+    <div class="modal-content list-quotes">
       <br>
       <% @user_quotes.each do |q| %>
             <li class="text-center">"<%= q.content %>"</li>
             <% if q.user == current_user %>
-              <li><%= link_to '<i class="fa fa-times" aria-hidden="true"></i>'.html_safe, quote_path(q), method: :delete %></li>
+              <li class=''><p><%= link_to '<i class="fa fa-times" aria-hidden="true"></i>'.html_safe, quote_path(q),class:'delete', method: :delete %></p>
+              </li>
             <% end %>  
             <hr>
 
