@@ -1,46 +1,17 @@
-<div class="visible-xs">
-  <div class="inline flex-container">
-    <li>fdgfgfgfg</li>
-    <li>gfgfgfgf</li>
-    <li>gfgfgfgfgfgfg</li>
-  </div>
-  <div class="user-actions">
-    <div class="row">
-      <div class="col-xs-6 actions-grid"><%= link_to image_tag("all_quotes_white_600.png", size: '100x100'), ".mobile-all-user-quotes", :data => { :toggle =>"modal" } %>
-        <%= render 'modal/mobile_all_user_quotes' %>
-      </div>
-      <div class="col-xs-6 actions-grid"><%= link_to image_tag("like_white_600.png", size: '100x100'), ".mobile-all-user-likes", :data => { :toggle =>"modal" } %>
-      <%= render 'modal/mobile_all_user_likes' %>
-    </div>
-      <div class="col-xs-6 actions-grid"><%= link_to image_tag("network_white_600.png", size: '100x100'), ".mobile-feed-sm", :data => { :toggle =>"modal" } %></div>
-      <div class="col-xs-6 actions-grid"><%= image_submit_tag("inspiration_white_600.png", width: "100", height: "100", size: '100x100', id:"showmenu") %>
-        <div class="menu" style="display:none">
-          <form id="" action="">
-            <input type="text" value="<%= params[:keyword]%>" name="keyword" placeholder="Enter a keyword ...">
-            <button type="submit" class="btn btn-primary">go</button>
-          </form>
-        </div>  
-      </div>
-      <div class="col-xs-6 actions-grid"><%= link_to image_tag("trending_white_600.png", size: '100x100'), ".mobile-feed-sm", :data => { :toggle =>"modal" } %>
-        <%= render 'modal/mobile_feed' %>
-      </div>
-      <div class="col-xs-6 actions-grid">ALl quotes</div>
-    </div>
-  </div>
-</div>
+  <%= render 'shared/navbar_mobile' %>
 <div id="desktop-main-actions">
   <br>
-  <%= link_to image_tag("all_quotes_white_600.png", size: '80x80'), ".see-all-user-quotes", :data => { :toggle =>"modal" } %>
-  <p class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="popover" data-content="Display all your quotes">
+  <%= link_to image_tag("list_white_600.png", size: '80x80'), ".see-all-user-quotes", :data => { :toggle =>"modal" } %>
+  <p class="action-buttons glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="popover-user-quotes" data-content="Display all your quotes">
   </p>
   <%= render 'modal/see_all_user_quotes' %>
   <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".see-all-user-likes">All I liked</button> -->
   <%= link_to image_tag("like_white_600.png", size: '80x80'), ".see-all-user-likes", :data => { :toggle =>"modal" } %>
     <%= render 'modal/see_all_user_likes' %>
-  <p class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="popover" data-content="Display all your quotes"></p>
+  <p class="action-buttons glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="popover-user-likes" data-content="Display all the quotes you liked"></p>
   <br>
   <%= image_submit_tag("inspiration_white_600.png", width: "80", height: "80", id:'showmenu') %>
-  <p class="glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="popover" data-content="Display all your quotes"></p>
+  <p class="action-buttons glyphicon glyphicon-question-sign" aria-hidden="true" data-toggle="popover-search" data-content="Search quotes in all our Database !"></p>
   <!-- <div id="showmenu">Search</div> -->
   <div class="menu" style="display:none">
     <form action="">
@@ -52,5 +23,9 @@
 
 
 <script>$(function () {
-  $('[data-toggle="popover"]').popover()
-})</script>
+  $('[data-toggle="popover-user-quotes"]').popover()
+  $('[data-toggle="popover-user-likes"]').popover()
+  $('[data-toggle="popover-search"]').popover()
+
+})
+</script>

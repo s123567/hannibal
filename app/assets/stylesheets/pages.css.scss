@@ -4,6 +4,16 @@
 
 /*GENERAL*/
 
+.navbar-mobile {
+  display: flex;
+  justify-content:center;
+  margin: 15px 0 15px;
+}
+
+.navbar-nav {
+  display: flex;
+}
+
 
 body { 
   background: url('Mountains_Landscape_blurred.jpg') no-repeat center center fixed; 
@@ -29,8 +39,12 @@ li {
  color: $red; 
 }
 
-.actions {
+.actions-text {
   font-family: 'Poiret One', serif;
+}
+
+.action-buttons {
+  color: $golden;
 }
 
 /*SPACING*/
@@ -85,7 +99,8 @@ li {
   font-size: 2em;
   padding: 0 0.3em;
   color: $whitish;
-  font-family: 'Merriweather', 'Georgia', 'Times New Roman', serif ;
+  font-family: 'Josefin Sans','Poiret One', 'Merriweather', 'Georgia', 'Times New Roman', serif ;
+  font-weight: 600;
 
 }
 
@@ -127,6 +142,7 @@ li {
 .flex-container {
   display: flex;
   justify-content:center;
+  align-items:center;
   margin: 5px 0 5px;
 }
 
@@ -151,6 +167,7 @@ li {
 @media only screen and (max-width : 979px) {
 
 }
+
 
 @media only screen and (max-width : 767px) {
 

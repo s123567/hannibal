@@ -1,14 +1,18 @@
 
 <div class="modal fade add-quote-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
   <div class="modal-dialog modal-sm" role="document">
-    <div class="modal-content">
+    <div class="modal-content text-center">
+      <%= render 'shared/error_messages' %>
+
       <br>
+      <h2 class="text-center form-text">Write your own quote</h2>
+      <p class="text-center form-text">To be inspirational enough, it will have to be inferior to 140 characters...</p>
       <%= simple_form_for @quote do |f| %>
 
-        <%= f.input :content %>
-        <%= f.button :submit %>
+        <%= f.input :content, class:'action-buttons' %>
+        <%= f.button :submit, class:'form-button' %>
       <% end %>
-
+      <br>
     </div>
   </div>
 </div>

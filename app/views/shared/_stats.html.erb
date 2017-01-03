@@ -1,39 +1,48 @@
 <% @user ||= current_user %>
-<div class="stats">
-  <a href="<%= following_user_path(@user) %>">
-    <strong id="following" class="stat">
-      <%= @user.following.count %>
-    </strong>
-    following
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
-    <strong id="followers" class="stat">
-      <%= @user.followers.count %>
-    </strong>
-    followers
-  </a>
-</div>
-
-<div class="follow_unfollow_list">
-  <div class="following_list">
-    <% if @user.following.count != 0 %>
-    <p>You follow these people:</p>
-      <% @user.following.each do |following|  %>
-        <li><%= following.email %></li>
-      <% end %>
-      <% else %>
-      <p>You do not follow anybody</p>
-    <% end %>  
-  </div>
-  <div class="follower_list">
-    <% if @user.followers.count != 0 %>
-    <p>You are being watched by these people people:</p>
-    <% @user.followers.each do |followers|  %>
-      <li><%= followers.email %></li>
-    <% end %>
-    <% else %>
-    <p>You have no followers</p>
-  <% end %>
-  </div>
-  
-</div>
+<div class="container">
+  <div class="stats text-center">
+    <a href="<%= following_user_path(@user) %>">
+      <strong id="following" class="stat">
+        <%= @user.following.count %>
+      </strong>
+      following
+    </a>
+    <a href="<%= followers_user_path(@user) %>">
+      <strong id="followers" class="stat">
+        <%= @user.followers.count %>
+      </strong>
+      followers
+    </a>
+  </div> <!-- stats -->
+  <div class="follow_unfollow_list">
+    <div class="row">
+      <div class="col-xs-6 text-center">
+        <div class="following_list">
+          <% if @user.following.count != 0 %>
+          <p>You follow these people:</p>
+            <% @user.following.each do |following|  %>
+              <li><i class="fa fa-address-book" aria-hidden="true"></i>
+                <%= following.name %></li>
+            <% end %>
+            <% else %>
+            <p>You do not follow anybody</p>
+          <% end %>  
+        </div>
+      </div>
+      <div class="col-xs-6 text-center">
+        <div class="follower_list">
+          <% if @user.followers.count != 0 %>
+          <p>You are being watched by these people people:</p>
+          <% @user.followers.each do |followers|  %>
+            <li><i class="fa fa-address-book-o" aria-hidden="true"></i>
+              <%= followers.name %>
+            </li>
+          <% end %>
+          <% else %>
+          <p>You have no followers</p>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div> <!-- follow unfollow list -->
+</div> <!-- container -->

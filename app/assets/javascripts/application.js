@@ -25,12 +25,4 @@
       $('#showmenu').click(function() {
         $('.menu').slideToggle("fast");
       });
-
-
-      $('#mobile-search').click(function (){
-        $("#mobile-form").toggle("slide", {
-          direction: "down"
-        }, 500);
-
-      });
     });
